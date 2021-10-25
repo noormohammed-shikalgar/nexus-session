@@ -31,4 +31,4 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ENDPOINT_URL: ${{secrets.WASABI_ENDPOINT_URL}}
-        run: aws s3 sync dist s3://$AWS_S3_BUCKET/$RELEASE_VERSION/ --acl public-read --endpoint-url=$AWS_ENDPOINT_URL
+        run: aws s3 sync -r ./ s3://$AWS_S3_BUCKET/$RELEASE_VERSION/ --acl public-read --endpoint-url=$AWS_ENDPOINT_URL
