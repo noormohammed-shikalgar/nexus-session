@@ -23,7 +23,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Set env
-        run: echo ::set-env name=v$(echo ${GITHUB_REF:10})
+        run: | 
+          echo ::set-env name=v$(echo ${GITHUB_REF:10})
+          echo env : ${{secrets.AWS_SECRET_ACCESS_KEY}}
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
