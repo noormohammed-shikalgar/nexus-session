@@ -49,4 +49,4 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'us-west-1'   # optional: defaults to us-east-1
         DEST_DIR: package/ui-${GITHUB_REF:10}
-        SOURCE_DIR: 'ui/dist/ui/ui-${GITHUB_REF:10}.zip'
+        SOURCE_DIR: 'ui/dist/ui'
