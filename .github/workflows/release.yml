@@ -35,6 +35,11 @@ jobs:
     - name: Build
       run: ng build --prod
       working-directory: ui
+    - name: Install zip
+      uses: montudor/action-zip@v1
+    - name: Zip dist
+      run: zip -qq -r ui-${GITHUB_REF:10}.zip ui && mkdir -p zip && mv ui-${GITHUB_REF:10}.zip zip
+      working-directory: ui/dist
     - uses: jakejarvis/s3-sync-action@master
       with:
         args: --acl public-read --endpoint-url=https://s3.us-west-1.wasabisys.com
@@ -44,4 +49,4 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'us-west-1'   # optional: defaults to us-east-1
         DEST_DIR: package/ui-${GITHUB_REF:10}
-        SOURCE_DIR: 'ui/dist'
+        SOURCE_DIR: 'ui/dist/ui/zip'
