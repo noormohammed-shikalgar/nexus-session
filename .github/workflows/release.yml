@@ -34,7 +34,7 @@ jobs:
 #       working-directory: ui
     - name: Build
       run: ng build --prod
-      working-directory: ui
+#       working-directory: ui
     - uses: jakejarvis/s3-sync-action@master
       with:
         args: --acl public-read --endpoint-url=https://s3.us-west-1.wasabisys.com
